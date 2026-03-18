@@ -72,5 +72,34 @@ namespace KeresztrejtvenyGUI
 			else
 				tb.Text = "-";
 		}
+
+		private void Mentes_Click(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				string index = cbIndex.SelectedItem.ToString();
+				string fajl = $"kr{index}.txt";
+
+				using (StreamWriter sw = new StreamWriter(fajl))
+				{
+					for (int i = 0; i < sorok; i++)
+					{
+						string sor = "";
+
+						for (int j = 0; j < oszlopok; j++)
+						{
+							TextBox tb = (TextBox)gridRacs.Children[i * oszlopok + j];
+							sor += tb.Text;
+						}
+						sw.WriteLine(sor);
+					}
+				}
+				MessageBox.Show("A keresztrejtvény mentése sikeres!");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
 	}
 }

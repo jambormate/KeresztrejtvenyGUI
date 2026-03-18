@@ -14,9 +14,9 @@
 		</StackPanel>
 
 		<StackPanel Orientation="Horizontal" Margin="0,10">
-			<Button Content="Keresztrejtvény létrehozása" Click="Letrehoz_Click" Margin="0,0,10,0"/>
-			<Button Content="Keresztrejtvény mentése" Margin="0,0,10,0"/>
-			<ComboBox x:Name="cbIndex" Width="40"/>
+			<Button Content="Keresztrejtvény létrehozása" Click="Letrehoz_Click" Margin="0,0,20,0" Width="160"/>
+			<Button Content="Keresztrejtvény mentése" Margin="0,0,20,0" Click="Mentes_Click" Width="160"/>
+			<ComboBox x:Name="cbIndex" Width="50"/>
 		</StackPanel>
 
 		<ScrollViewer VerticalScrollBarVisibility="Auto">
