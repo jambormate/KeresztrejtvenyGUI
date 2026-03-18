@@ -16,9 +16,44 @@ namespace KeresztrejtvenyGUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+		int sorok;
+		int oszlopok;
+		public MainWindow()
         {
             InitializeComponent();
-        }
-    }
+			for (int i = 6; i <= 15; i++)
+			{
+				cbSor.Items.Add(i);
+				cbOszlop.Items.Add(i);
+			}
+
+			cbSor.SelectedItem = 15;
+			cbOszlop.SelectedItem = 15;
+
+			for (int i = 1; i <= 10; i++)
+				cbIndex.Items.Add(i);
+
+			cbIndex.SelectedItem = 3;
+		}
+		private void Letrehoz_Click(object sender, RoutedEventArgs e)
+		{
+			gridRacs.Children.Clear();
+
+			sorok = (int)cbSor.SelectedItem;
+			oszlopok = (int)cbOszlop.SelectedItem;
+
+			gridRacs.Rows = sorok;
+			gridRacs.Columns = oszlopok;
+
+			for (int i = 0; i < sorok * oszlopok; i++)
+			{
+				TextBox tb = new TextBox();
+				tb.Text = "-";
+				tb.Width = 25;
+				tb.Height = 25;
+				tb.TextAlignment = TextAlignment.Center;
+				gridRacs.Children.Add(tb);
+			}
+		}
+	}
 }
