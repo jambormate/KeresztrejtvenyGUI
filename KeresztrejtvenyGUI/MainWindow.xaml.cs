@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -45,15 +46,31 @@ namespace KeresztrejtvenyGUI
 			gridRacs.Rows = sorok;
 			gridRacs.Columns = oszlopok;
 
-			for (int i = 0; i < sorok * oszlopok; i++)
+			for (int i = 0; i < sorok; i++)
 			{
-				TextBox tb = new TextBox();
-				tb.Text = "-";
-				tb.Width = 25;
-				tb.Height = 25;
-				tb.TextAlignment = TextAlignment.Center;
-				gridRacs.Children.Add(tb);
+				for (int j = 0; j < oszlopok; j++)
+				{
+					TextBox tb = new TextBox();
+					tb.Text = "-";
+					tb.Width = 25;
+					tb.Height = 25;
+					tb.Margin = new Thickness(1);
+					tb.TextAlignment = TextAlignment.Center;
+					gridRacs.Width = oszlopok * 30;
+					gridRacs.Height = sorok * 30;
+					gridRacs.Children.Add(tb);
+					tb.MouseDoubleClick += MezoDuplaKlikk;
+				}
 			}
+		}
+		private void MezoDuplaKlikk(object sender, MouseButtonEventArgs e)
+		{
+			TextBox tb = sender as TextBox;
+
+			if (tb.Text == "-")
+				tb.Text = "#";
+			else
+				tb.Text = "-";
 		}
 	}
 }
